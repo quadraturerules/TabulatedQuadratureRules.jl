@@ -1,7 +1,7 @@
 name = "TabulatedQuadratureRules"
 uuid = "3da39775-d94e-428b-a709-24e9ab7fe27d"
 authors = ["Matthew Scroggs"]
-version = "0.7.4"
+version = "0.7.5"
 
 [compat]
 julia = "1.6.7"
