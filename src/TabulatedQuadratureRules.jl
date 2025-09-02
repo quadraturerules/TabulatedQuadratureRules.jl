@@ -7,6 +7,8 @@ include("hammer_marlowe_stroud.jl")
 include("sauter_schwab.jl")
 include("xiao_gimbutas.jl")
 include("centroid_quadrature.jl")
+include("closed_newton_cotes.jl")
+include("open_newton_cotes.jl")
 include("vertex_quadrature.jl")
 
 @enum QuadratureRule begin
@@ -16,6 +18,8 @@ include("vertex_quadrature.jl")
     QR_SauterSchwab = 7
     QR_XiaoGimbutas = 2
     QR_CentroidQuadrature = 5
+    QR_ClosedNewtonCotes = 8
+    QR_OpenNewtonCotes = 9
     QR_VertexQuadrature = 4
 end
 
@@ -39,6 +43,12 @@ function single_integral_quadrature(
     end
     if rtype == QR_CentroidQuadrature
         return centroid_quadrature(domain, order)
+    end
+    if rtype == QR_ClosedNewtonCotes
+        return closed_newton_cotes(domain, order)
+    end
+    if rtype == QR_OpenNewtonCotes
+        return open_newton_cotes(domain, order)
     end
     if rtype == QR_VertexQuadrature
         return vertex_quadrature(domain, order)
