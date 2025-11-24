@@ -11,7 +11,7 @@ jobs:
     name: register()
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: Comment @JuliaRegistrator register()
       uses: peter-evans/commit-comment@v3
       with:
