@@ -1,6 +1,8 @@
 module TabulatedQuadratureRules
 
 include("domains.jl")
+include("chebyshev_gauss_type_1.jl")
+include("chebyshev_gauss_type_2.jl")
 include("clenshaw_curtis.jl")
 include("gauss_legendre.jl")
 include("gauss_lobatto_legendre.jl")
@@ -13,6 +15,8 @@ include("open_newton_cotes.jl")
 include("vertex_quadrature.jl")
 
 @enum QuadratureRule begin
+    QR_ChebyshevGaussType1 = 11
+    QR_ChebyshevGaussType2 = 12
     QR_ClenshawCurtis = 10
     QR_GaussLegendre = 1
     QR_GaussLobattoLegendre = 3
@@ -31,6 +35,12 @@ function single_integral_quadrature(
     domain::Domain,
     order::Integer,
 )
+    if rtype == QR_ChebyshevGaussType1
+        return chebyshev_gauss_type_1(domain, order)
+    end
+    if rtype == QR_ChebyshevGaussType2
+        return chebyshev_gauss_type_2(domain, order)
+    end
     if rtype == QR_ClenshawCurtis
         return clenshaw_curtis(domain, order)
     end
