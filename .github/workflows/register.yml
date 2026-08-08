@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v5
     - name: Comment @JuliaRegistrator register()
-      uses: peter-evans/commit-comment@v3
+      uses: peter-evans/commit-comment@v4
       with:
         body: "@JuliaRegistrator register()"
         reactions: rocket
